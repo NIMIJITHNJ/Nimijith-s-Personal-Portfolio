@@ -202,18 +202,11 @@ ul {
     font-size: 4.5rem;
     line-height: 1.1;
     margin-bottom: 1.5rem;
-    background: linear-gradient(120deg, #58a6ff, #d2a8ff, #a371f7);
-    background-size: 200% auto;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: shine 4s linear infinite;
-}
-
-@keyframes shine {
-    to {
-        background-position: 200% center;
-    }
+    color: var(--heading-color);
+    text-shadow: 0 0 20px rgba(88, 166, 255, 0.4);
+    background: none;
+    -webkit-text-fill-color: initial;
+    animation: none;
 }
 
 .hero-content h3 {
