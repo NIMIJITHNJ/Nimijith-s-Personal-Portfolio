@@ -52,5 +52,36 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Form Submission Simulation code removed to allow Google Form submission
+    // Custom Form Submission Handling
+    const contactForm = document.getElementById('contactForm');
+    const iframe = document.getElementById('hidden_iframe');
+
+    if (contactForm && iframe) {
+        let submitted = false;
+
+        contactForm.addEventListener('submit', () => {
+            submitted = true;
+            const btn = contactForm.querySelector('button');
+            const originalText = btn.innerText;
+
+            btn.innerText = 'Sending...';
+            btn.disabled = true;
+        });
+
+        iframe.addEventListener('load', () => {
+            if (submitted) {
+                const btn = contactForm.querySelector('button');
+                btn.innerText = 'Message Sent!';
+                btn.style.backgroundColor = '#238636';
+                contactForm.reset();
+
+                setTimeout(() => {
+                    btn.innerText = 'Send Message';
+                    btn.disabled = false;
+                    btn.style.backgroundColor = '';
+                    submitted = false;
+                }, 3000);
+            }
+        });
+    }
 });
