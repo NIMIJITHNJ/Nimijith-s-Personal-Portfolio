@@ -209,7 +209,6 @@ ul {
     background-clip: border-box;
     -webkit-background-clip: border-box;
     -webkit-text-fill-color: currentColor;
-    animation: none;
 }
 
 .hero-content h3 {
