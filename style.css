@@ -202,10 +202,13 @@ ul {
     font-size: 4.5rem;
     line-height: 1.1;
     margin-bottom: 1.5rem;
-    color: var(--heading-color);
+    color: #ffffff;
+    /* Hardcoded white for safety */
     text-shadow: 0 0 20px rgba(88, 166, 255, 0.4);
     background: none;
-    -webkit-text-fill-color: initial;
+    background-clip: border-box;
+    -webkit-background-clip: border-box;
+    -webkit-text-fill-color: currentColor;
     animation: none;
 }
 
