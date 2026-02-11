@@ -202,13 +202,11 @@ ul {
     font-size: 4.5rem;
     line-height: 1.1;
     margin-bottom: 1.5rem;
-    color: #ffffff;
-    /* Hardcoded white for safety */
-    text-shadow: 0 0 20px rgba(88, 166, 255, 0.4);
-    background: none;
-    background-clip: border-box;
-    -webkit-background-clip: border-box;
-    -webkit-text-fill-color: currentColor;
+    background: linear-gradient(135deg, var(--primary-color), #d2a8ff);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: none;
 }
 
 .hero-content h3 {
