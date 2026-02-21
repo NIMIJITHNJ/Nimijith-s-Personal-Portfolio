@@ -15,53 +15,60 @@ document.addEventListener('DOMContentLoaded', () => {
     const exitBtns = document.querySelectorAll('.btn-exit');
 
     // State
-    let quizData = [];
+    const quizData = [
+        { "Question": "Coronal plane cuts the body in:", "Option A": "Top and bottom halves", "Option B": "Front and back halves", "Option C": "Left and right halves", "Option D": "Diagonally", "Answer": "B" },
+        { "Question": "Which of the following statements is TRUE?", "Option A": "Pulmonary arteries carry oxygenated blood", "Option B": "Pulmonary veins carry oxygenated blood", "Option C": "Pulmonary veins carry deoxygenated blood", "Option D": "None of the above", "Answer": "B" },
+        { "Question": "Which of the following is the smallest blood vessel?", "Option A": "Artery", "Option B": "Capillary", "Option C": "Vein", "Option D": "Aorta", "Answer": "B" },
+        { "Question": "Which chamber dispenses blood to the body?", "Option A": "Right atrium", "Option B": "Left atrium", "Option C": "Right ventricle", "Option D": "Left ventricle", "Answer": "D" },
+        { "Question": "Which of the following is a component of a long bone?", "Option A": "Epiphysis", "Option B": "Diaphysis", "Option C": "Medullary cavity", "Option D": "All of the above", "Answer": "D" },
+        { "Question": "When the angle at a joint decreases it is known as:", "Option A": "Abduction", "Option B": "Rotation", "Option C": "Flexion", "Option D": "Extension", "Answer": "C" },
+        { "Question": "Which of the following statements is TRUE?", "Option A": "Cardiac muscles are striated", "Option B": "Cardiac muscles are non-striated", "Option C": "Cardiac muscles are voluntary", "Option D": "Smooth muscles are voluntary", "Answer": "A" },
+        { "Question": "Arrangement of effort-fulcrum-load represents which class of a lever?", "Option A": "Class 1", "Option B": "Class 2", "Option C": "Class 3", "Option D": "Class 4", "Answer": "A" },
+        { "Question": "Which of the following is a synovial joint?", "Option A": "Shoulder", "Option B": "Hip", "Option C": "Knee", "Option D": "All of the above", "Answer": "D" },
+        { "Question": "Rotational movements generally occur in which of the following planes?", "Option A": "Sagittal", "Option B": "Coronal", "Option C": "Transverse", "Option D": "Frontal", "Answer": "C" },
+        { "Question": "Study of normal functioning of the body is called:", "Option A": "Pathology", "Option B": "Kinesiology", "Option C": "Physiology", "Option D": "Biology", "Answer": "C" },
+        { "Question": "Formula for cardiac output is:", "Option A": "Q = SV - HR", "Option B": "Q = SV + HR", "Option C": "Q = SV x HR", "Option D": "Q = SV + MHR", "Answer": "C" },
+        { "Question": "Which of the following is a property of skeletal muscles?", "Option A": "Elasticity", "Option B": "Contractility", "Option C": "Excitability", "Option D": "All of the above", "Answer": "D" },
+        { "Question": "Abduction is:", "Option A": "Taking the limb away from the midline of the body", "Option B": "Taking the limb towards the midline of the body", "Option C": "Taking the limb in front of the body", "Option D": "Taking the limb behind the body", "Answer": "A" },
+        { "Question": "Which of the following is the smallest component of a muscle?", "Option A": "Fibre", "Option B": "Fascicle", "Option C": "Myofibril", "Option D": "Actin and myosin", "Answer": "D" },
+        { "Question": "Which of the following is the function of the anterior deltoid muscle?", "Option A": "Shoulder flexion", "Option B": "Shoulder horizontal adduction", "Option C": "Shoulder vertical abduction", "Option D": "All the above", "Answer": "D" },
+        { "Question": "Which one of the following muscles has the function of elbow flexion and forearm supination?", "Option A": "Wrist extensor", "Option B": "Triceps brachii", "Option C": "Biceps brachii", "Option D": "Flexor carpi radialis", "Answer": "C" },
+        { "Question": "Trunk flexion is the primary function of which of the following muscles?", "Option A": "Rectus abdominis", "Option B": "Transversus abdominis", "Option C": "Internal oblique", "Option D": "External oblique", "Answer": "A" },
+        { "Question": "Which of the following muscles brings the femur closer to the midline?", "Option A": "Adductor magnus", "Option B": "Gluteus maximus", "Option C": "Biceps femoris", "Option D": "Tibialis anterior", "Answer": "A" },
+        { "Question": "Which of the following muscles does shoulder horizontal adduction?", "Option A": "Pectoralis minor", "Option B": "Pectoralis major", "Option C": "Anterior deltoid", "Option D": "Both B and C", "Answer": "D" },
+        { "Question": "Which of the following muscles does elbow flexion?", "Option A": "Biceps brachii", "Option B": "Triceps brachii", "Option C": "Brachialis", "Option D": "Both A and C", "Answer": "D" },
+        { "Question": "Which angle of the bench would be most suited to train the clavicular head of the pectoralis major?", "Option A": "15° decline", "Option B": "Flat", "Option C": "15° incline", "Option D": "30° incline", "Answer": "D" },
+        { "Question": "Which of the following is a biarticulate muscle?", "Option A": "Brachialis", "Option B": "Lateral head of triceps brachii", "Option C": "Long head of triceps brachii", "Option D": "None of the above", "Answer": "C" },
+        { "Question": "Sam is doing lateral flexion using a high pulley. Which muscle is he training?", "Option A": "Rectus abdominis", "Option B": "Transversus abdominis", "Option C": "Iliacus", "Option D": "External oblique", "Answer": "D" },
+        { "Question": "Which function of the gluteus maximus is targeted in hip thrust exercises?", "Option A": "Hip extension", "Option B": "Hip adduction", "Option C": "Hip abduction", "Option D": "All of the above", "Answer": "A" },
+        { "Question": "Which of the following is an isolation movement?", "Option A": "Good morning", "Option B": "Shrugs", "Option C": "Dumbbell pullover", "Option D": "All of the above", "Answer": "D" },
+        { "Question": "Which of the following muscles are involved in one-arm dumbbell row exercises?", "Option A": "Latissimus dorsi", "Option B": "Biceps brachii", "Option C": "Teres major", "Option D": "All of the above", "Answer": "D" },
+        { "Question": "Scapular elevation against resistance can be trained through which exercise?", "Option A": "Prone shrugs", "Option B": "Reverse shrugs", "Option C": "Shrugs", "Option D": "Pullovers", "Answer": "C" },
+        { "Question": "Which of the following is the best sequence for a back workout?", "Option A": "Bent over row-Wide grip lt pull down-Shrugs-Prone high row", "Option B": "Wide grip lat pull down-Shrugs-Prone high row-Bent over row", "Option C": "Prone high row-Bent over row-shrugs-Wide grip lat pull down", "Option D": "prone high row-Bent over row-Wide grip lat pull down-Shrugs", "Answer": "A" },
+        { "Question": "Shoulder extension is a function of which of the following muscles?", "Option A": "Rhomboids", "Option B": "Teres major", "Option C": "Trapezius", "Option D": "Teres minor", "Answer": "B" },
+        { "Question": "Unilateral leg press will train which of the following muscles?", "Option A": "Vastus lateralis", "Option B": "Soleus", "Option C": "Gastrocnemius", "Option D": "Short head of biceps femoris", "Answer": "A" },
+        { "Question": "Rotational movements generally occur in which of the following planes?", "Option A": "Sagittal", "Option B": "Coronal", "Option C": "Transverse", "Option D": "Frontal", "Answer": "C" },
+        { "Question": "Best exercise for Erector Spinae (resisting trunk flexion) would be:", "Option A": "Bent over row", "Option B": "Good morning", "Option C": "One arm row", "Option D": "Chin-ups", "Answer": "B" },
+        { "Question": "Which of the following muscles is responsible to maintain scapular depression in close grip pull-up?", "Option A": "Middle fibers of trapezius", "Option B": "Lower fibers of trapezius", "Option C": "Upper fibers of trapezius", "Option D": "Latissimus dorsi", "Answer": "B" },
+        { "Question": "Which of the following will be the optimal movement in order to improve strength?", "Option A": "T-bar rows", "Option B": "Straight arm pull-downs", "Option C": "DB pull-overs", "Option D": "Bent over DB rows", "Answer": "D" },
+        { "Question": "Which one of the following muscles maintains lateral pelvic stability?", "Option A": "Gluteus maximus", "Option B": "Gluteus medius", "Option C": "Vastus lateralis", "Option D": "Hip flexors", "Answer": "B" },
+        { "Question": "Which of the following covers the surface area in the pectoral group?", "Option A": "Sternocostal head", "Option B": "Clavicular head", "Option C": "Pectoralis minor", "Option D": "None of the above", "Answer": "A" },
+        { "Question": "Which of the following movements takes place in the coronal plane?", "Option A": "Narrow grip lat pulldown", "Option B": "Wide grip chin-up", "Option C": "Wide grip bent-over row", "Option D": "One-arm dumbbell row", "Answer": "B" },
+        { "Question": "Which of the following muscles can abduct the hip?", "Option A": "Gluteus medius", "Option B": "Gluteus minimus", "Option C": "Vastus medialis", "Option D": "Both A and B", "Answer": "D" },
+        { "Question": "How many heads are there in triceps brachii?", "Option A": "1", "Option B": "3", "Option C": "2", "Option D": "4", "Answer": "B" },
+        { "Question": "Each of the following muscles does dorsiflexion:", "Option A": "Gastrocnemius", "Option B": "Tibialis anterior", "Option C": "Soleus", "Option D": "Latissimus dorsi", "Answer": "B" },
+        { "Question": "If the trunk is rotated towards the left side  which of the following muscles are involved?", "Option A": "External oblique of left side and internal oblique of left side", "Option B": "External oblique of left side only and internal oblique of left side", "Option C": "External oblique of right side and internal oblique of left side", "Option D": "External oblique of right side only  and internal oblique of right side", "Answer": "C" },
+        { "Question": "How many muscles are there in the pectoral group?", "Option A": "1", "Option B": "2", "Option C": "3", "Option D": "4", "Answer": "B" },
+        { "Question": "Shoulder horizontal abduction function of posterior deltoid is targeted in which of the following exercises?", "Option A": "Reverse pec deck fly", "Option B": "Bent over dumbbell rows", "Option C": "Straight arm pull down", "Option D": "Wide grip lat pull down", "Answer": "A" }
+    ];
     let currentPracticeIndex = 0;
     let practiceUnseen = [];
 
-    // --- File Handling ---
-    function loadQuizData() {
-        Papa.parse('quiz_data.csv', {
-            download: true,
-            header: true,
-            skipEmptyLines: true,
-            complete: function (results) {
-                if (results.errors.length > 0) {
-                    showError("Error parsing CSV. Ensure it is formatted correctly.");
-                    console.error(results.errors);
-                    return;
-                }
-
-                // Validate headers
-                const requiredHeaders = ["Question", "Option A", "Option B", "Option C", "Option D", "Answer"];
-                const headers = results.meta.fields;
-
-                const isValid = requiredHeaders.every(h => headers.includes(h));
-                if (!isValid) {
-                    showError("CSV missing required columns. Need: Question, Option A, Option B, Option C, Option D, Answer");
-                    return;
-                }
-
-                quizData = results.data;
-                subtitle.textContent = "Ready to practice!";
-                setupError.style.display = 'none';
-                modeSelection.style.display = 'block';
-            },
-            error: function (err) {
-                showError("Failed to fetch the CSV file. Please make sure quiz_data.csv exists in the Fitquiz directory.");
-                console.error(err);
-            }
-        });
-    }
-
-    // Auto-load it immediately
-    loadQuizData();
-
-    function showError(msg) {
-        setupError.textContent = msg;
-        setupError.style.display = 'block';
-        modeSelection.style.display = 'none';
-    }
+    // --- On Load Init ---
+    // Instantly ready to practice with hardcoded data
+    subtitle.textContent = "Ready to practice!";
+    setupError.style.display = 'none';
+    modeSelection.style.display = 'block';
 
 
     // --- Navigation ---
