@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitQuiz | Practice Tool</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Space+Grotesk:wght@500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+</head>
+
+<body>
+    <header id="header">
+        <nav class="navbar">
+            <div class="logo">FitQuiz</div>
+            <a href="../index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
+        </nav>
+    </header>
+
+    <main class="container main-content">
+        <!-- Settings Section -->
+        <section id="setup-section" class="card fade-in">
+            <h2>Welcome to FitQuiz</h2>
+            <p class="subtitle">Upload your Quiz CSV to get started.</p>
+
+            <div class="upload-container">
+                <input type="file" id="csvFileInput" accept=".csv" />
+                <label for="csvFileInput" class="btn btn-primary">
+                    <i class="fas fa-upload"></i> Choose CSV File
+                </label>
+                <span id="fileNameDisplay" class="file-name">No file chosen</span>
+            </div>
+
+            <div class="mode-selection" style="display: none;">
+                <h3>Select Mode:</h3>
+                <div class="buttons-row">
+                    <button id="btnPracticeMode" class="btn btn-secondary"><i class="fas fa-random"></i> Practice
+                        Mode</button>
+                    <button id="btnFullTestMode" class="btn btn-secondary"><i class="fas fa-list"></i> Full Test
+                        Mode</button>
+                </div>
+            </div>
+            <div id="setupError" class="error-msg"></div>
+        </section>
+
+        <!-- Practice Mode Section -->
+        <section id="practice-section" class="card" style="display: none;">
+            <div class="mode-header">
+                <h2>Practice Mode</h2>
+                <button class="btn btn-text btn-exit"><i class="fas fa-times"></i> Exit</button>
+            </div>
+            <div class="progress-info">
+                <span>Question <span id="practiceCurrentNum">1</span></span>
+            </div>
+
+            <div class="question-container">
+                <h3 id="practiceQuestionText" class="question-text">Loading question...</h3>
+                <div id="practiceOptions" class="options-grid">
+                    <!-- Options populated by JS -->
+                </div>
+            </div>
+
+            <div class="feedback-container">
+                <p id="practiceFeedback" class="feedback-text"></p>
+                <button id="btnNextQuestion" class="btn btn-primary" style="display: none;">Next Question <i
+                        class="fas fa-arrow-right"></i></button>
+            </div>
+        </section>
+
+        <!-- Full Test Mode Section -->
+        <section id="test-section" class="card" style="display: none;">
+            <div class="mode-header">
+                <h2>Full Test Mode</h2>
+                <button class="btn btn-text btn-exit"><i class="fas fa-times"></i> Exit</button>
+            </div>
+            <p class="subtitle">Answer all questions and submit to see your score.</p>
+
+            <div id="testQuestionsList" class="test-list">
+                <!-- Questions populated by JS -->
+            </div>
+
+            <div class="test-footer">
+                <div id="testScoreDisplay" class="score-display" style="display: none;">
+                    <h3>Your Score: <span id="finalScore">0</span> / <span id="totalQuestions">0</span></h3>
+                </div>
+                <button id="btnSubmitTest" class="btn btn-primary">Submit Test</button>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
