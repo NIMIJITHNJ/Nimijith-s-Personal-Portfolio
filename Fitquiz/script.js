@@ -2,10 +2,9 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     // Elements
-    const fileInput = document.getElementById('csvFileInput');
-    const fileNameDisplay = document.getElementById('fileNameDisplay');
     const modeSelection = document.querySelector('.mode-selection');
     const setupError = document.getElementById('setupError');
+    const subtitle = document.querySelector('#setup-section .subtitle');
 
     const setupSection = document.getElementById('setup-section');
     const practiceSection = document.getElementById('practice-section');
@@ -21,19 +20,9 @@ document.addEventListener('DOMContentLoaded', () => {
     let practiceUnseen = [];
 
     // --- File Handling ---
-    fileInput.addEventListener('change', (e) => {
-        const file = e.target.files[0];
-        if (file) {
-            fileNameDisplay.textContent = file.name;
-            parseCSV(file);
-        } else {
-            fileNameDisplay.textContent = 'No file chosen';
-            modeSelection.style.display = 'none';
-        }
-    });
-
-    function parseCSV(file) {
-        Papa.parse(file, {
+    function loadQuizData() {
+        Papa.parse('quiz_data.csv', {
+            download: true,
             header: true,
             skipEmptyLines: true,
             complete: function (results) {
@@ -54,11 +43,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 quizData = results.data;
+                subtitle.textContent = "Ready to practice!";
                 setupError.style.display = 'none';
                 modeSelection.style.display = 'block';
+            },
+            error: function (err) {
+                showError("Failed to fetch the CSV file. Please make sure quiz_data.csv exists in the Fitquiz directory.");
+                console.error(err);
             }
         });
     }
+
+    // Auto-load it immediately
+    loadQuizData();
 
     function showError(msg) {
         setupError.textContent = msg;
